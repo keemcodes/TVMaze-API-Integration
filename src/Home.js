@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Alert } from "react-bootstrap";
 
-import UserView from "./UserView";
+import UserView from "./views/UserView";
 import AdminView from "./AdminView";
 export default function Home(props) {
   let userLevel = JSON.parse(sessionStorage.getItem("auth-details")).level;

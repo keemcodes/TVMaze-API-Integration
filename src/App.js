@@ -5,7 +5,7 @@ import React from "react";
 
 import { Button } from "react-bootstrap";
 
-import AccessForm from "./AccessForm";
+import AccessForm from "./components/AccessForm";
 import Home from "./Home";
 
 export default function App() {
