@@ -7,10 +7,7 @@ export default function AdminView(props) {
       <Container>
         <Row>
           <Col>
-            <Alert variant="primary">
-              {`${props.isAuth}`}
-              Admin View
-            </Alert>
+            <Alert variant="primary">Admin View</Alert>
           </Col>
         </Row>
       </Container>

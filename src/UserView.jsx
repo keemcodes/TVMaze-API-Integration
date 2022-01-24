@@ -7,7 +7,7 @@ export default function UserView(props) {
       <Container>
         <Row>
           <Col>
-            <Alert variant="primary">{`${props.isAuth}`}</Alert>
+            <Alert variant="primary">User View</Alert>
           </Col>
         </Row>
       </Container>
