@@ -8,6 +8,8 @@ export default function Home(props) {
   console.log(userLevel);
   return (
     <>
+    <section>
+
       {userLevel === 1 ? (
         <UserView
           isAuth={props.isAuth}
@@ -19,6 +21,7 @@ export default function Home(props) {
           handleLogoutSubmit={props.handleLogoutSubmit}
         />
       )}
+    </section>
     </>
   );
 }
