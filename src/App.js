@@ -5,6 +5,7 @@ import React from "react";
 
 import { Button } from "react-bootstrap";
 
+import NavBar from "./components/NavBar";
 import AccessForm from "./components/AccessForm";
 import Home from "./Home";
 
@@ -61,6 +62,7 @@ export default function App() {
 
   return (
     <>
+      <NavBar />
       {isAuth === false ? (
         <AccessForm
           handleEmailChange={handleEmailChange}

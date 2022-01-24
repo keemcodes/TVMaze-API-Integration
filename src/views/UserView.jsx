@@ -2,6 +2,11 @@ import React from "react";
 import { Container, Row, Col, Button, Alert } from "react-bootstrap";
 
 export default function UserView(props) {
+  // useEffect(() => {
+  //     fetch()
+  
+  // }, []);
+  
   return (
     <>
       <Container>
