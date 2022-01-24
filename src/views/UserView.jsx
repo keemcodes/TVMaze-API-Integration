@@ -12,7 +12,7 @@ export default function UserView(props) {
       <Container>
         <Row>
           <Col>
-            <Alert variant="primary">User View</Alert>
+            <Alert variant="primary">User View, Location = {props.userLocation}</Alert>
           </Col>
         </Row>
       </Container>

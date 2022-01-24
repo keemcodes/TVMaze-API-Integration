@@ -7,7 +7,7 @@ export default function AdminView(props) {
       <Container>
         <Row>
           <Col>
-            <Alert variant="primary">Admin View</Alert>
+            <Alert variant="primary">Admin View, Location = {props.userLocation}</Alert>
           </Col>
         </Row>
       </Container>

@@ -11,7 +11,7 @@ export default function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isAuth, setIsAuth] = useState(false);
-  const [location, setLocation] = useState() // 1 is show search, 2 is people search
+  const [location, setLocation] = useState(); // 1 is show search, 2 is people search
   let Users = [
     {
       email: "user@test.com",
@@ -34,9 +34,9 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    setLocation(JSON.parse(sessionStorage.getItem("auth-details")).location)
+    let initialLocation = JSON.parse(sessionStorage.getItem("auth-details"))?.location
+    initialLocation != undefined ? setLocation(initialLocation) : setLocation(1)
   }, [location]);
-  
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -60,16 +60,18 @@ export default function App() {
     sessionStorage.removeItem("auth-details");
     setIsAuth(false);
   };
+
   const handleLogoutSubmit = (e) => {
     e.preventDefault();
     sessionStorage.removeItem("auth-details");
     setIsAuth(false);
   };
+
   const handleLocationChange = (locationId) => {
-    setLocation(locationId)
-    let storage = JSON.parse(sessionStorage.getItem('auth-details'))
-    storage.location = locationId
-    sessionStorage.setItem('auth-details', JSON.stringify(storage))
+    setLocation(locationId);
+    let storage = JSON.parse(sessionStorage.getItem("auth-details"));
+    storage.location = locationId;
+    sessionStorage.setItem("auth-details", JSON.stringify(storage));
   };
 
   return (
@@ -82,7 +84,7 @@ export default function App() {
           handleLoginSubmit={handleLoginSubmit}
         />
       ) : (
-        <Home isAuth={isAuth} handleLogoutSubmit={handleLogoutSubmit}/>
+        <Home isAuth={isAuth} handleLogoutSubmit={handleLogoutSubmit} />
       )}
     </>
   );
