@@ -3,9 +3,9 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { useState, useEffect } from "react";
 import React from "react";
 
-import { Container, Row, Col, Alert } from 'react-bootstrap';
 
 import AccessForm from "./AccessForm";
+import Home from "./Home";
 
 export default function App() {
   const [email, setEmail] = useState("");
@@ -54,19 +54,14 @@ export default function App() {
 
   return (
     <>    
-      {isAuth === false ? 
-      <AccessForm 
-        handleEmailChange={handleEmailChange}
-        handlePasswordChange={handlePasswordChange}
-        handleLoginSubmit={handleLoginSubmit}
-      /> : 
-      <Container>
-        <Row>
-          <Col>
-          <Alert variant='primary'>{`${isAuth}`}</Alert>
-          </Col>
-        </Row>
-      </Container>
+      {
+        isAuth === false ? 
+        <AccessForm 
+          handleEmailChange={handleEmailChange}
+          handlePasswordChange={handlePasswordChange}
+          handleLoginSubmit={handleLoginSubmit}
+        /> : 
+        <Home isAuth={isAuth}/>
       }
     </>
   );
