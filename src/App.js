@@ -3,6 +3,8 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
 import React from "react";
 
+import { Button } from "react-bootstrap";
+
 import AccessForm from "./AccessForm";
 import Home from "./Home";
 
@@ -51,6 +53,11 @@ export default function App() {
     sessionStorage.removeItem("auth-details");
     setIsAuth(false);
   };
+  const handleLogoutSubmit = (e) => {
+    e.preventDefault();
+    sessionStorage.removeItem("auth-details");
+    setIsAuth(false);
+  };
 
   return (
     <>
@@ -61,7 +68,7 @@ export default function App() {
           handleLoginSubmit={handleLoginSubmit}
         />
       ) : (
-        <Home isAuth={isAuth} />
+        <Home isAuth={isAuth} handleLogoutSubmit={handleLogoutSubmit}/>
       )}
     </>
   );
