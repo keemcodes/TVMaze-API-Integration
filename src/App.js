@@ -1,6 +1,11 @@
 import "./App.css";
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { useState, useEffect } from "react";
 import React from "react";
+
+import { Container, Row, Col, Alert } from 'react-bootstrap';
+
+import AccessForm from "./AccessForm";
 
 export default function App() {
   const [email, setEmail] = useState("");
@@ -48,36 +53,21 @@ export default function App() {
   };
 
   return (
-    <div className="login-page">
-      <h2>Login In</h2>
-      <form autoComplete="off" onSubmit={handleLoginSubmit}>
-        <div className="form-group">
-          <input
-            type="email"
-            className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            placeholder="Enter email"
-            value={email}
-            onChange={handleEmailChange}
-          />
-        </div>
-        <div className="form-group">
-          <input
-            type="password"
-            autoComplete="new-password"
-            className="form-control"
-            id="exampleInputPassword1"
-            placeholder="Password"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-        <p>{`${isAuth}`}</p>
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
-    </div>
+    <>    
+      {isAuth === false ? 
+      <AccessForm 
+        handleEmailChange={handleEmailChange}
+        handlePasswordChange={handlePasswordChange}
+        handleLoginSubmit={handleLoginSubmit}
+      /> : 
+      <Container>
+        <Row>
+          <Col>
+          <Alert variant='primary'>{`${isAuth}`}</Alert>
+          </Col>
+        </Row>
+      </Container>
+      }
+    </>
   );
 }
