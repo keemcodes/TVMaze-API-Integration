@@ -1,23 +1,30 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 
 export default function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isAuth, setIsAuth] = useState(false);
   let Users = [
 		{
-			email: "user@email.com",
+			email: "user@test.com",
 			password: "pass",
 			level: 1,
 		},
 		{
-			email: "admin@email.com",
+			email: "admin@test.com",
 			password: "pass",
 			level: 2,
 		},
 
 	]
+
+  useEffect(() => {
+    let authed = sessionStorage.getItem('auth-details')
+    authed ? setIsAuth(true) : setIsAuth(false)
+    console.log('useEffect', authed)
+  }, []);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -31,9 +38,13 @@ export default function App() {
     e.preventDefault();
 		const results = Users.filter(user => user.email === email && user.password === password);
 		if (results.length > 0) {
-			alert('hi')
-			console.log(results)
-		}
+      sessionStorage.setItem('auth-details', JSON.stringify(results[0]));
+      setIsAuth(true)
+      return
+    }
+    alert('login failed')
+    sessionStorage.removeItem('auth-details')
+    setIsAuth(false)
   };
 
   return (
@@ -61,6 +72,7 @@ export default function App() {
             value={password}
             onChange={handlePasswordChange}
           />
+        <p>{`${isAuth}`}</p>
         </div>
         <button type="submit" className="btn btn-primary">
           Submit

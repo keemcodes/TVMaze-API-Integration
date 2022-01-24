@@ -10,20 +10,9 @@
 ### What is this?
 A React JS Application to ingest and format data provided by the [TV Maze API](https://www.tvmaze.com/api).
 
-### Installation 
+### Notes 
 
-```bash
-$ git clone https://github.com/keemcodes/TVMaze-API-Integration.git
-$ cd TVMaze-API-Integration
-$ npm install
-```
 
-### Run 
-
-```bash
-# In parent directory
-$ npm start
-```
 
 ## Technology Used
 
