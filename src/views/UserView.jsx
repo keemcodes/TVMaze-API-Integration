@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import ReactHtmlParser from "react-html-parser";
+import React, { useState } from "react";
 import {
   Container,
   Row,
@@ -16,7 +15,7 @@ import {
 export default function UserView(props) {
   const [query, setQuery] = useState("");
   const [show, setShow] = useState();
-
+  const htmlRemover = /(<([^>]+)>)/ig;
   function handleQueryChange(e) {
     setQuery(e.target.value);
   }
@@ -65,8 +64,9 @@ export default function UserView(props) {
             {show !== undefined ? (
               <Card style={{ margin: "auto" }}>
                 <Card.Body>
+                  
                   <Card.Title>{show?.name}</Card.Title>
-                  <Card.Text>{ReactHtmlParser(show?.summary)}</Card.Text>
+                  <Card.Text>{show?.summary.replace(htmlRemover, '')}</Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
                   <ListGroupItem>
@@ -74,7 +74,7 @@ export default function UserView(props) {
                   </ListGroupItem>
                   <ListGroupItem>Premiered: {show?.premiered}</ListGroupItem>
                   <ListGroupItem>
-                    Ended Date/Status: {show?.ended ?? "Running"}
+                    Ended Date/Status: {show?.ended ?? "Undetermined or still active"}
                   </ListGroupItem>
                 </ListGroup>
                 <Card.Body>
