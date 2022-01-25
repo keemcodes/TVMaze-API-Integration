@@ -57,12 +57,10 @@ export default function SingleShowSearch(props) {
                 </ListGroupItem>
               </ListGroup>
               <Card.Body>
-                <Card.Link href={props.singleShow?.url}>Show Page</Card.Link>
-                <Card.Link
-                  href={props.singleShow?._links.previousepisode?.href}
-                >
-                  Last Episode
+                <Card.Link href={props?.singleShow?.officialSite}>
+                      Official Site
                 </Card.Link>
+                <Card.Link href={props.singleShow?.url}>Show Page</Card.Link>
               </Card.Body>
               <Card.Img
                 variant="bottom"

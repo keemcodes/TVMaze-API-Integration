@@ -62,12 +62,12 @@ export default function ShowSearch(props) {
                     </ListGroupItem>
                   </ListGroup>
                   <Card.Body>
+                    <Card.Link href={item?.show?.officialSite}>
+                      Official Site
+                    </Card.Link>
                     <Card.Link href={item?.show?.url}>Show Page</Card.Link>
                     <Card.Link href={item?.show?.image?.original}>
                       Show Photo
-                    </Card.Link>
-                    <Card.Link href={item?.show?._links.previousepisode?.href}>
-                      Last Episode
                     </Card.Link>
                   </Card.Body>
                 </Card>
