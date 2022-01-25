@@ -6,6 +6,7 @@ import {
   Button,
   Alert,
   InputGroup,
+  Form,
   FormControl,
   Card,
   ListGroup,
@@ -21,7 +22,8 @@ export default function UserView(props) {
     setQuery(e.target.value);
   }
 
-  function getSingleShow() {
+  function getSingleShow(e) {
+    e.preventDefault();
     if (query === "") return;
     fetch(`${props.rootURL}/singlesearch/shows?q=${query}`)
       .then((response) => response.json())
@@ -29,7 +31,8 @@ export default function UserView(props) {
         setSingleShow(response);
       });
   }
-  function getActors() {
+  function getActors(e) {
+    e.preventDefault();
     if (query === "") return;
     fetch(`${props.rootURL}/search/people?q=${query}`)
       .then((response) => response.json())
@@ -51,21 +54,23 @@ export default function UserView(props) {
       {props.userLocation === 1 ? (
         <Container>
           <Row>
-            <InputGroup className="mb-3">
-              <FormControl
-                placeholder="Search for a show"
-                aria-label="Search for a show"
-                aria-describedby="basic-addon2"
-                onChange={handleQueryChange}
-              />
-              <Button
-                variant="outline-secondary"
-                id="button-addon2"
-                onClick={getSingleShow}
-              >
-                Search
-              </Button>
-            </InputGroup>
+            <Form onSubmit={getSingleShow}>
+              <InputGroup className="mb-3">
+                <FormControl
+                  placeholder="Search for a show"
+                  aria-label="Search for a show"
+                  aria-describedby="basic-addon2"
+                  onChange={handleQueryChange}
+                />
+                <Button
+                  variant="outline-secondary"
+                  id="button-addon2"
+                  type="submit"
+                >
+                  Search
+                </Button>
+              </InputGroup>
+            </Form>
           </Row>
           <Row>
             <Col>
@@ -109,21 +114,23 @@ export default function UserView(props) {
       ) : (
         <Container>
           <Row>
-            <InputGroup className="mb-3">
-              <FormControl
-                placeholder="Search for an actor"
-                aria-label="Search for an actor"
-                aria-describedby="basic-addon2"
-                onChange={handleQueryChange}
-              />
-              <Button
-                variant="outline-secondary"
-                id="button-addon2"
-                onClick={getActors}
-              >
-                Search
-              </Button>
-            </InputGroup>
+            <Form onSubmit={getActors}>
+              <InputGroup className="mb-3">
+                <FormControl
+                  placeholder="Search for an actor"
+                  aria-label="Search for an actor"
+                  aria-describedby="basic-addon2"
+                  onChange={handleQueryChange}
+                />
+                <Button
+                  variant="outline-secondary"
+                  id="button-addon2"
+                  type="submit"
+                >
+                  Search
+                </Button>
+              </InputGroup>
+            </Form>
           </Row>
           <Row xs={1} md={2} className="g-4">
             {actors !== undefined
@@ -147,10 +154,10 @@ export default function UserView(props) {
                         </ListGroupItem>
                       </ListGroup>
                       <Card.Body>
-                        <Card.Link href={item?.person?.url}>Actor Page</Card.Link>
-                        <Card.Link
-                          href={item?.person?.image?.original}
-                        >
+                        <Card.Link href={item?.person?.url}>
+                          Actor Page
+                        </Card.Link>
+                        <Card.Link href={item?.person?.image?.original}>
                           Actor Photo
                         </Card.Link>
                       </Card.Body>

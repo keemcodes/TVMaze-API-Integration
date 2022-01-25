@@ -38,18 +38,18 @@ export default function App() {
       sessionStorage.getItem("auth-details")
     )?.location;
     initialLocation !== undefined
-      ? setLocation(initialLocation)
-      : setLocation(1);
+      ? setLocation((initialLocation) => initialLocation)
+      : setLocation(() => 1);
   }, [location]);
 
   function pageName(id) {
-    switch(id) {
+    switch (id) {
       default:
-        return 'Show Search'
+        return "Show Search";
       case 1:
-        return 'Show Search'
+        return "Show Search";
       case 2:
-        return 'People Search'
+        return "People Search";
     }
   }
 
@@ -84,6 +84,7 @@ export default function App() {
 
   const handleLocationChange = (locationId) => {
     setLocation(locationId);
+    console.log(location)
     let storage = JSON.parse(sessionStorage.getItem("auth-details"));
     storage.location = locationId;
     sessionStorage.setItem("auth-details", JSON.stringify(storage));
