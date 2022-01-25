@@ -10,6 +10,13 @@
 ### What is this?
 A React JS Application to ingest and format data provided by the [TV Maze API](https://www.tvmaze.com/api).
 
+Implementation details and application functionality is described in more detail in my [notes.md](notes.md)
+
+You can also use this application live at [keemcodes.com/maze](https://keemcodes.com/maze/)
+
+Public login accounts available below
+
+
 ### Installation 
 
 ```bash
@@ -23,6 +30,13 @@ $ npm install
 ```bash
 # In parent directory
 $ npm start
+```
+
+### User Accounts
+```
+user@test.com
+admin@test.com
+password: pass
 ```
 
 ## Technology Used

@@ -16,7 +16,7 @@ export default function AccessForm(props) {
                   onChange={props.handleEmailChange}
                 />
                 <Form.Text className="text-muted">
-                  We'll never share your email with anyone else.
+                  Login accounts credentials are listed <a href="https://github.com/keemcodes/TVMaze-API-Integration#user-accounts">here</a>
                 </Form.Text>
               </Form.Group>
 

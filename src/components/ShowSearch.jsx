@@ -49,7 +49,7 @@ export default function ShowSearch(props) {
                   <ListGroup className="list-group-flush">
                     <ListGroupItem>
                       Genres:{" "}
-                      {item?.show?.genres == 0
+                      {item?.show?.genres === 0
                         ? "Not Available"
                         : item?.show?.genres.join(", ")}
                     </ListGroupItem>
