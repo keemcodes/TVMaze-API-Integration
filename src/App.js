@@ -31,7 +31,6 @@ export default function App() {
   useEffect(() => {
     let authed = sessionStorage.getItem("auth-details");
     authed ? setIsAuth(true) : setIsAuth(false);
-    console.log("useEffect", authed);
   }, []);
 
   useEffect(() => {
@@ -42,6 +41,17 @@ export default function App() {
       ? setLocation(initialLocation)
       : setLocation(1);
   }, [location]);
+
+  function pageName(id) {
+    switch(id) {
+      default:
+        return 'Show Search'
+      case 1:
+        return 'Show Search'
+      case 2:
+        return 'People Search'
+    }
+  }
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -93,7 +103,7 @@ export default function App() {
           handleLoginSubmit={handleLoginSubmit}
         />
       ) : (
-        <Home isAuth={isAuth} rootURL={rootURL} />
+        <Home isAuth={isAuth} rootURL={rootURL} pageName={pageName} />
       )}
     </>
   );

@@ -16,6 +16,7 @@ export default function Home(props) {
             handleLogoutSubmit={props.handleLogoutSubmit}
             userLocation={userLocation}
             rootURL={props.rootURL}
+            pageName={props.pageName}
           />
         ) : (
           <AdminView
@@ -23,6 +24,8 @@ export default function Home(props) {
             handleLogoutSubmit={props.handleLogoutSubmit}
             userLocation={userLocation}
             rootURL={props.rootURL}
+            pageName={props.pageName}
+
           />
         )}
       </section>
