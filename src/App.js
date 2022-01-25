@@ -15,6 +15,7 @@ export default function App() {
 
   const [query, setQuery] = useState("");
   const [singleShow, setSingleShow] = useState();
+  const [shows, setShows] = useState();
   const [actors, setActors] = useState();
   const htmlRemover = /(<([^>]+)>)/gi;
 
@@ -97,6 +98,15 @@ export default function App() {
         setSingleShow(response);
       });
   }
+  function getShows(e) {
+    e.preventDefault();
+    if (query === "") return;
+    fetch(`${rootURL}/search/shows?q=${query}`)
+      .then((response) => response.json())
+      .then((response) => {
+        setShows(response);
+      });
+  }
   function getActors(e) {
     e.preventDefault();
     if (query === "") return;
@@ -127,6 +137,8 @@ export default function App() {
           handleQueryChange={handleQueryChange}
           singleShow={singleShow}
           getSingleShow={getSingleShow}
+          shows={shows}
+          getShows={getShows}
           actors={actors}
           getActors={getActors}
           htmlRemover={htmlRemover}

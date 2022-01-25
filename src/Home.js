@@ -4,6 +4,7 @@ import UserView from "./views/UserView";
 import AdminView from "./views/AdminView";
 
 import SingleShowSearch from "./components/SingleShowSearch";
+import ShowSearch from "./components/ShowSearch";
 import ActorsSearch from "./components/ActorsSearch";
 
 function RenderLocation(props) {
@@ -19,10 +20,11 @@ function RenderLocation(props) {
       );
     case 2:
       return (
-        <ActorsSearch
+        <ShowSearch
           handleQueryChange={props.handleQueryChange}
-          getActors={props.getActors}
-          actors={props.actors}
+          getShows={props.getShows}
+          shows={props.shows}
+          htmlRemover={props.htmlRemover}
         />
       );
     case 3:
@@ -90,6 +92,8 @@ export default function Home(props) {
             handleQueryChange={props.handleQueryChange}
             singleShow={props.singleShow}
             getSingleShow={props.getSingleShow}
+            getShows={props.getShows}
+            shows={props.shows}
             actors={props.actors}
             getActors={props.getActors}
             htmlRemover={props.htmlRemover}

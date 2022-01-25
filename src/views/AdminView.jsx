@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Button, Alert } from "react-bootstrap";
+import { Container, Row, Col, Alert } from "react-bootstrap";
 
 export default function AdminView(props) {
   return (
@@ -11,13 +11,17 @@ export default function AdminView(props) {
           </Col>
         </Row>
       </Container>
-      <Container>
-        <Row>
-          <Col>
-            <Button onClick={props.handleLogoutSubmit}>Logout</Button>
-          </Col>
-        </Row>
-      </Container>
+      <props.RenderLocation
+        userLocation={props.userLocation}
+        handleQueryChange={props.handleQueryChange}
+        getSingleShow={props.getSingleShow}
+        singleShow={props.singleShow}
+        getShows={props.getShows}
+        shows={props.shows}
+        getActors={props.getActors}
+        actors={props.actors}
+        htmlRemover={props.htmlRemover}
+      />
     </>
   );
 }

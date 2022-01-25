@@ -41,7 +41,7 @@ export default function SingleShowSearch(props) {
               <Card.Body>
                 <Card.Title>{props.singleShow?.name}</Card.Title>
                 <Card.Text>
-                  {props.singleShow?.summary?.replace(props.htmlRemover, "")}
+                  {props.singleShow?.summary?.replace(props.htmlRemover, "") ?? "No Summary Available"}
                 </Card.Text>
               </Card.Body>
               <ListGroup className="list-group-flush">
