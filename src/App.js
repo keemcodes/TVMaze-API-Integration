@@ -12,6 +12,7 @@ export default function App() {
   const [password, setPassword] = useState("");
   const [isAuth, setIsAuth] = useState(false);
   const [location, setLocation] = useState(); // 1 is show search, 2 is people search
+  let rootURL = "https://api.tvmaze.com";
   let Users = [
     {
       email: "user@test.com",
@@ -34,8 +35,12 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    let initialLocation = JSON.parse(sessionStorage.getItem("auth-details"))?.location
-    initialLocation != undefined ? setLocation(initialLocation) : setLocation(1)
+    let initialLocation = JSON.parse(
+      sessionStorage.getItem("auth-details")
+    )?.location;
+    initialLocation !== undefined
+      ? setLocation(initialLocation)
+      : setLocation(1);
   }, [location]);
 
   const handleEmailChange = (e) => {
@@ -76,7 +81,11 @@ export default function App() {
 
   return (
     <>
-      <NavBar location={location} handleLocationChange={handleLocationChange} />
+      <NavBar
+        location={location}
+        handleLocationChange={handleLocationChange}
+        handleLogoutSubmit={handleLogoutSubmit}
+      />
       {isAuth === false ? (
         <AccessForm
           handleEmailChange={handleEmailChange}
@@ -84,7 +93,7 @@ export default function App() {
           handleLoginSubmit={handleLoginSubmit}
         />
       ) : (
-        <Home isAuth={isAuth} handleLogoutSubmit={handleLogoutSubmit} />
+        <Home isAuth={isAuth} rootURL={rootURL} />
       )}
     </>
   );

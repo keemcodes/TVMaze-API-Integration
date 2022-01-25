@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav, Container, Button } from "react-bootstrap";
 
 export default function NavBar(props) {
   let userEmail = JSON.parse(sessionStorage.getItem("auth-details"))?.email;
@@ -31,8 +31,17 @@ export default function NavBar(props) {
             </Navbar.Collapse>
             <Navbar.Collapse className="justify-content-end">
               <Navbar.Text>
-                Signed in as: <a href="#">{userEmail}</a>
+                Signed in as: <a href="#home">{userEmail}</a>
               </Navbar.Text>
+            </Navbar.Collapse>
+            <Navbar.Collapse>
+              <Button
+                size="sm"
+                style={{ marginLeft: 10 }}
+                onClick={props.handleLogoutSubmit}
+              >
+                Logout
+              </Button>
             </Navbar.Collapse>
           </>
         ) : (
