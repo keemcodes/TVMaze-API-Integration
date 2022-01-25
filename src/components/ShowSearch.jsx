@@ -42,7 +42,7 @@ export default function ShowSearch(props) {
                   <Card.Body>
                     <Card.Title>{item?.show?.name}</Card.Title>
                     <Card.Text>
-                      {item?.show?.summary.replace(props.htmlRemover, "") ??
+                      {item?.show?.summary?.replace(props.htmlRemover, "") ??
                         "No Summary Available"}
                     </Card.Text>
                   </Card.Body>
