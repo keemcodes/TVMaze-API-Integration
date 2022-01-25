@@ -74,7 +74,7 @@ export default function UserView(props) {
           </Row>
           <Row>
             <Col>
-              {singleShow !== undefined ? (
+              {singleShow != undefined ? (
                 <Card style={{ margin: "auto" }}>
                   <Card.Body>
                     <Card.Title>{singleShow?.name}</Card.Title>
@@ -133,11 +133,10 @@ export default function UserView(props) {
             </Form>
           </Row>
           <Row xs={1} md={2} className="g-4">
-            {actors !== undefined
+            {actors != undefined
               ? actors.map((item, index) => (
                   <Col key={index}>
                     <Card>
-                      {/* <Card.Img variant="top" src={item?.person?.image?.original} /> */}
                       <Card.Body>
                         <Card.Title>{item?.person?.name}</Card.Title>
                       </Card.Body>
