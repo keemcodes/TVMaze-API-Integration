@@ -7,6 +7,18 @@ export default function Home(props) {
   let userLocation = JSON.parse(
     sessionStorage.getItem("auth-details")
   ).location;
+  function pageName() {
+    switch (userLocation) {
+      default:
+        return "Show Search";
+      case 1:
+        return "Show Search";
+      case 2:
+        return "Multi-Show Search";
+      case 3:
+        return "People Search";
+    }
+  }
   return (
     <>
       <section>
@@ -16,7 +28,13 @@ export default function Home(props) {
             handleLogoutSubmit={props.handleLogoutSubmit}
             userLocation={userLocation}
             rootURL={props.rootURL}
-            pageName={props.pageName}
+            pageName={pageName}
+            handleQueryChange={props.handleQueryChange}
+            singleShow={props.singleShow}
+            getSingleShow={props.getSingleShow}
+            actors={props.actors}
+            getActors={props.getActors}
+            htmlRemover={props.htmlRemover}
           />
         ) : (
           <AdminView
@@ -24,7 +42,13 @@ export default function Home(props) {
             handleLogoutSubmit={props.handleLogoutSubmit}
             userLocation={userLocation}
             rootURL={props.rootURL}
-            pageName={props.pageName}
+            pageName={pageName}
+            handleQueryChange={props.handleQueryChange}
+            singleShow={props.singleShow}
+            getSingleShow={props.getSingleShow}
+            actors={props.actors}
+            getActors={props.getActors}
+            htmlRemover={props.htmlRemover}
 
           />
         )}

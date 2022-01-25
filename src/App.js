@@ -12,6 +12,12 @@ export default function App() {
   const [password, setPassword] = useState("");
   const [isAuth, setIsAuth] = useState(false);
   const [location, setLocation] = useState(); // 1 is show search, 2 is people search
+
+  const [query, setQuery] = useState("");
+  const [singleShow, setSingleShow] = useState();
+  const [actors, setActors] = useState();
+  const htmlRemover = /(<([^>]+)>)/gi;
+
   let rootURL = "https://api.tvmaze.com";
   let Users = [
     {
@@ -41,17 +47,6 @@ export default function App() {
       ? setLocation((initialLocation) => initialLocation)
       : setLocation(() => 1);
   }, [location]);
-
-  function pageName(id) {
-    switch (id) {
-      default:
-        return "Show Search";
-      case 1:
-        return "Show Search";
-      case 2:
-        return "People Search";
-    }
-  }
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -84,11 +79,33 @@ export default function App() {
 
   const handleLocationChange = (locationId) => {
     setLocation(locationId);
-    console.log(location)
     let storage = JSON.parse(sessionStorage.getItem("auth-details"));
     storage.location = locationId;
     sessionStorage.setItem("auth-details", JSON.stringify(storage));
   };
+
+  function handleQueryChange(e) {
+    setQuery(e.target.value);
+  }
+
+  function getSingleShow(e) {
+    e.preventDefault();
+    if (query === "") return;
+    fetch(`${rootURL}/singlesearch/shows?q=${query}`)
+      .then((response) => response.json())
+      .then((response) => {
+        setSingleShow(response);
+      });
+  }
+  function getActors(e) {
+    e.preventDefault();
+    if (query === "") return;
+    fetch(`${rootURL}/search/people?q=${query}`)
+      .then((response) => response.json())
+      .then((response) => {
+        setActors(response);
+      });
+  }
 
   return (
     <>
@@ -104,7 +121,16 @@ export default function App() {
           handleLoginSubmit={handleLoginSubmit}
         />
       ) : (
-        <Home isAuth={isAuth} rootURL={rootURL} pageName={pageName} />
+        <Home
+          isAuth={isAuth}
+          rootURL={rootURL}
+          handleQueryChange={handleQueryChange}
+          singleShow={singleShow}
+          getSingleShow={getSingleShow}
+          actors={actors}
+          getActors={getActors}
+          htmlRemover={htmlRemover}
+        />
       )}
     </>
   );

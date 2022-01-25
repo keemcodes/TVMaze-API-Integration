@@ -3,6 +3,7 @@ import { Navbar, Nav, Container, Button } from "react-bootstrap";
 
 export default function NavBar(props) {
   let userEmail = JSON.parse(sessionStorage.getItem("auth-details"))?.email;
+  let userLevel = JSON.parse(sessionStorage.getItem("auth-details"))?.level;
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -24,7 +25,12 @@ export default function NavBar(props) {
                 <Nav.Link onClick={() => props.handleLocationChange(1)}>
                   Show Search
                 </Nav.Link>
+                {userLevel === 2 ? 
                 <Nav.Link onClick={() => props.handleLocationChange(2)}>
+                  Multi-Show Search
+                </Nav.Link>
+                : ""}
+                <Nav.Link onClick={() => props.handleLocationChange(3)}>
                   People Search
                 </Nav.Link>
               </Nav>
