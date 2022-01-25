@@ -25,11 +25,13 @@ export default function NavBar(props) {
                 <Nav.Link onClick={() => props.handleLocationChange(1)}>
                   Show Search
                 </Nav.Link>
-                {userLevel === 2 ? 
-                <Nav.Link onClick={() => props.handleLocationChange(2)}>
-                  Multi-Show Search
-                </Nav.Link>
-                : ""}
+                {userLevel === 2 ? (
+                  <Nav.Link onClick={() => props.handleLocationChange(2)}>
+                    Multi-Show Search
+                  </Nav.Link>
+                ) : (
+                  ""
+                )}
                 <Nav.Link onClick={() => props.handleLocationChange(3)}>
                   People Search
                 </Nav.Link>
