@@ -36,12 +36,13 @@ export default function SingleShowSearch(props) {
       </Row>
       <Row>
         <Col>
-          {props.singleShow != undefined ? (
+          {props.singleShow && (
             <Card style={{ margin: "auto" }}>
               <Card.Body>
                 <Card.Title>{props.singleShow?.name}</Card.Title>
                 <Card.Text>
-                  {props.singleShow?.summary?.replace(props.htmlRemover, "") ?? "No Summary Available"}
+                  {props.singleShow?.summary?.replace(props.htmlRemover, "") ??
+                    "No Summary Available"}
                 </Card.Text>
               </Card.Body>
               <ListGroup className="list-group-flush">
@@ -58,7 +59,7 @@ export default function SingleShowSearch(props) {
               </ListGroup>
               <Card.Body>
                 <Card.Link href={props?.singleShow?.officialSite}>
-                      Official Site
+                  Official Site
                 </Card.Link>
                 <Card.Link href={props.singleShow?.url}>Show Page</Card.Link>
               </Card.Body>
@@ -67,8 +68,6 @@ export default function SingleShowSearch(props) {
                 src={props.singleShow?.image?.original}
               />
             </Card>
-          ) : (
-            ""
           )}
         </Col>
       </Row>

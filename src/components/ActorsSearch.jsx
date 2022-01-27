@@ -35,34 +35,33 @@ export default function ActorsSearch(props) {
         </Form>
       </Row>
       <Row xs={1} md={2} className="g-4">
-        {props.actors != undefined
-          ? props.actors.map((item, index) => (
-              <Col key={index}>
-                <Card>
-                  <Card.Body>
-                    <Card.Title>{item?.person?.name}</Card.Title>
-                  </Card.Body>
-                  <ListGroup className="list-group-flush">
-                    <ListGroupItem>
-                      Gender: {item?.person?.gender ?? "Not Available"}
-                    </ListGroupItem>
-                    <ListGroupItem>
-                      Birthday: {item?.person?.birthday ?? "Not Available"}
-                    </ListGroupItem>
-                    <ListGroupItem>
-                      Country: {item?.person?.country?.name ?? "Not Available"}
-                    </ListGroupItem>
-                  </ListGroup>
-                  <Card.Body>
-                    <Card.Link href={item?.person?.url}>Actor Page</Card.Link>
-                    <Card.Link href={item?.person?.image?.original}>
-                      Actor Photo
-                    </Card.Link>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))
-          : ""}
+        {props.actors &&
+          props.actors.map((item, index) => (
+            <Col key={index}>
+              <Card>
+                <Card.Body>
+                  <Card.Title>{item?.person?.name}</Card.Title>
+                </Card.Body>
+                <ListGroup className="list-group-flush">
+                  <ListGroupItem>
+                    Gender: {item?.person?.gender ?? "Not Available"}
+                  </ListGroupItem>
+                  <ListGroupItem>
+                    Birthday: {item?.person?.birthday ?? "Not Available"}
+                  </ListGroupItem>
+                  <ListGroupItem>
+                    Country: {item?.person?.country?.name ?? "Not Available"}
+                  </ListGroupItem>
+                </ListGroup>
+                <Card.Body>
+                  <Card.Link href={item?.person?.url}>Actor Page</Card.Link>
+                  <Card.Link href={item?.person?.image?.original}>
+                    Actor Photo
+                  </Card.Link>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
       </Row>
     </Container>
   );
